@@ -1,4 +1,7 @@
-# AngularFront
+# UserTasks Web
+
+Project built using https://github.com/amandaalouise/Microservice as REST API.
+Demo is available here: [Demo](http://104.223.82.121/)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.2.
 
