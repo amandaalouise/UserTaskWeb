@@ -1,0 +1,68 @@
+<div class="container-fluid">
+        <h2 class="pt-4 mb-4">User tasks list</h2>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Description</th>
+              <th scope="col">State</th>
+              <th scope="col">User ID</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let task of userTasks">
+              <th scope="row">{{task.id}}</th>
+              <td>{{task.description}}</td>
+              <td>{{task.state}}</td>
+              <td>{{task.userId}}</td>
+              <td>
+                <button type="button" class="btn btn-info ml-2" data-toggle="tooltip" data-placement="top"
+                  title="Edit task"  [routerLink]="[ '/edit-task', task.id ]"><i class="far fa-edit"></i></button>
+                  <button class="btn btn-danger ml-2" data-toggle="modal" data-placement="top"
+                  title="Remove user" [attr.data-target]="'#confirmModal' + task.id"><i class="far fa-trash-alt"></i></button>
+      
+                <!-- Modal -->
+                <div class="modal fade" id="confirmModal{{task.id}}" tabindex="-1" role="dialog" [attr.aria-labelledby]="'confirmModalLabel' + task.id"
+                  aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="confirmModalLabel{{task.id}}">Are you sure?</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        Do you want to remove this registry?
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" (click)="removeTask(task.id)" data-dismiss="modal">Confirm</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- End Modal -->
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="row" id="rowPagination">
+          <div class="col-12">
+            <pagination-controls [previousLabel]="labels.previousLabel" [nextLabel]="labels.nextLabel"
+              [screenReaderPaginationLabel]="labels.screenReaderPaginationLabel"
+              [screenReaderPageLabel]="labels.screenReaderPageLabel"
+              [screenReaderCurrentLabel]="labels.screenReaderCurrentLabel" (pageChange)="pageChanged($event)">
+            </pagination-controls>
+          </div>
+        </div>
+      </div>
+      
+      <script>
+        $(function () {
+          $('[data-toggle="tooltip"]').tooltip()
+        })
+      
+      </script>
+      

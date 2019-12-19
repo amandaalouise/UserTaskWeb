@@ -1,0 +1,38 @@
+<div class="container-fluid h-100">
+    <div class="row">
+      <div class="col-12 col-md-2 h-100 bg-gray-f5f5f5">
+        <div class="dashboard padhor-15">
+          <div class="py-4 padver-15-xs">
+            <ul class="nav flex-column" id="dashboardTabs">
+              <h1>Task Manager</h1>
+              <li class="nav-item">
+                <a class="nav-link">Users</a>
+                <ul style="margin-left: 10px;">
+                    <li class="mb-1">
+                        <a href="" [routerLink]="[ '/add-user' ]">Add User</a>
+                    </li>
+                    <li>
+                        <a href="" [routerLink]="[ '/list-users' ]">List Users</a>
+                    </li>
+                </ul>
+              </li>
+              <li class="nav-item mt-2">
+                <a class="nav-link">Tasks</a>
+                <ul style="margin-left: 10px;">
+                    <li class="mb-1">
+                        <a href="" [routerLink]="[ '/add-task' ]">Add Task</a>
+                    </li>
+                    <li>
+                        <a href="" [routerLink]="[ '/list-tasks' ]">List Tasks</a>
+                    </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-10 h-100">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
